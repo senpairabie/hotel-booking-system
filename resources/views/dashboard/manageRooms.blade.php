@@ -88,19 +88,23 @@
 
     <script>
 function editRoom(roomId) {
-    var room = {!! json_encode($rooms->find($room->id)) !!};
-    document.getElementById("roomNumber").value = room.number;
-    document.getElementById("roomType").value = room.type;
-    document.getElementById("roomStatus").value = room.status;
-    document.getElementById("roomPrice").value = room.price;
-    document.getElementById("roomDescription").value = room.description;
-    document.getElementById("roomIdInput").value = room.id;
-    document.getElementById("methodInput").value = "PUT"; 
-    document.getElementById("roomForm").action = "{{route('rooms.update', '')}}" + "/" + room.id;
-    document.getElementById("roomFormSubmitBtn").innerText = "Update";
+    var rooms = {!! json_encode($rooms) !!};
+    var room = rooms.find(r => r.id == roomId);
+
+    if (room) {
+        document.getElementById("roomNumber").value = room.number;
+        document.getElementById("roomType").value = room.type;
+        document.getElementById("roomStatus").value = room.status;
+        document.getElementById("roomPrice").value = room.price;
+        document.getElementById("roomDescription").value = room.description;
+        document.getElementById("roomIdInput").value = room.id;
+        document.getElementById("methodInput").value = "PUT";
+        document.getElementById("roomForm").action = "{{ route('rooms.update', '') }}/" + room.id;
+        document.getElementById("roomFormSubmitBtn").innerText = "Update";
+    }
+
     console.log(roomId);
 }
-
 </script>
 
 @endsection

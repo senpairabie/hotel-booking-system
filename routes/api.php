@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\UsersController;
 use App\Http\Controllers\Api\RoomsController;
 use App\Http\Controllers\Api\ReservationsController;
+use App\Http\Controllers\API\PassportAuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,17 +18,15 @@ use App\Http\Controllers\Api\ReservationsController;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::post('register', [PassportAuthController::class, 'register']);
+Route::post('login', [PassportAuthController::class, 'login']);
+
+Route::middleware('auth:api')->group(function () {
+    Route::get('user', [PassportAuthController::class, 'getDetails']);
+
+    Route::resource('users', UsersController::class);
+    Route::resource('rooms', RoomsController::class);
+    Route::resource('reservations', ReservationsController::class);
+
 });
 
-
-
-Route::post('login', [UsersController::class, 'login']);
-Route::post('register', [UsersController::class, 'register']);
-Route::post('logout', [UsersController::class, 'logout']);
-
-
-Route::resource('users', UsersController::class);
-Route::resource('rooms', RoomsController::class);
-Route::resource('reservations', ReservationsController::class);

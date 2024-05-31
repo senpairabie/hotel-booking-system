@@ -17,9 +17,11 @@ use App\Http\Controllers\ReservationsController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+Route::get('/', [RoomsController::class, 'index']);
 
 Route::get('/login', [UsersController::class, 'login'])->name('login');
 Route::post('/login', [UsersController::class, 'authenticate']);

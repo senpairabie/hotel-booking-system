@@ -7,7 +7,7 @@
         <div class="form-container">
             <ul class="nav nav-tabs" id="authTabs" role="tablist">
                 <li class="nav-item">
-                    <a class="nav-link active" id="login-tab" data-toggle="tab" href="#login" role="tab" aria-controls="login" aria-selected="true">Login</a>
+                    <a class="nav-link active" id="login-tab" data-toggle="tab" href="{{route('rooms.index')}}" role="tab" aria-controls="login" aria-selected="true">Login</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" id="signup-tab" data-toggle="tab" href="#signup" role="tab" aria-controls="signup" aria-selected="false">Sign Up</a>
