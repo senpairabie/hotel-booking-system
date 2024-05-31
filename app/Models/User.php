@@ -49,7 +49,7 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
     protected $attributes = [
-        'role' => 'user', // القيمة الافتراضية للحقل role
-        'is_active' => true, // القيمة الافتراضية للحقل is_active
+        'role' => 'user', 
+        'is_active' => true, 
     ];
 }

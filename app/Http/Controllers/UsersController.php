@@ -26,16 +26,12 @@ class UsersController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:8',
-            // 'role' => 'required|string|in:admin,employee',
-            // 'is_active' => 'required|boolean',
         ]);
 
         $user = new User();
         $user->name = $request->name;
         $user->email = $request->email;
         $user->password = Hash::make($request->password);
-        // $user->role = $request->role;
-        // $user->is_active = $request->is_active;
         $user->save();
 
         return redirect()->route('users.create')->with('success', 'تم إنشاء المستخدم بنجاح.');

@@ -13,10 +13,6 @@
             @else
         @endif
 
-        <!-- @if (Auth::check())
-
-        @endif -->
-
     </div>
 
     <!-- Content Section 1 -->
